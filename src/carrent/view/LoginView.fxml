@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="122.0" prefWidth="340.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="carrent.view.controllers.LoginViewController">
+   <children>
+      <TextField fx:id="usrField" layoutX="167.0" layoutY="14.0" promptText="Пользователь" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="4.0" />
+      <PasswordField fx:id="pswField" layoutX="167.0" layoutY="57.0" promptText="Пароль" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="44.0" />
+      <TextField fx:id="srvField" layoutX="167.0" layoutY="99.0" promptText="Сервер" text="LOCALHOST" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="84.0" />
+      <Label layoutX="78.0" layoutY="8.0" text="Пользователь" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="7.0" />
+      <Label layoutX="78.0" layoutY="48.0" text="Пароль" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="47.0" />
+      <Label layoutX="78.0" layoutY="88.0" text="Сервер" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="87.0" />
+      <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/users4.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

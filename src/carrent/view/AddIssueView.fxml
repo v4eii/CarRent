@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="304.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carrent.view.controllers.AddIssueViewController">
+   <children>
+      <DatePicker fx:id="dpDateDeliv" layoutX="24.0" layoutY="143.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="24.0" />
+      <Label layoutX="24.0" layoutY="126.0" text="* Дата выдачи" />
+      <Label layoutX="24.0" layoutY="14.0" text="* Автомобиль" />
+      <ComboBox fx:id="cbCar" layoutX="24.0" layoutY="31.0" prefWidth="150.0" AnchorPane.leftAnchor="24.0" />
+      <ComboBox fx:id="cbClient" layoutX="24.0" layoutY="88.0" prefWidth="150.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="88.0" />
+      <Label layoutX="24.0" layoutY="71.0" text="* Клиент" AnchorPane.topAnchor="71.0" />
+      <Label layoutX="357.0" layoutY="126.0" text="* Программа выдачи" AnchorPane.leftAnchor="357.0" AnchorPane.topAnchor="126.0" />
+      <ComboBox fx:id="cbReasonDeliv" layoutX="357.0" layoutY="143.0" prefWidth="150.0" AnchorPane.leftAnchor="357.0" AnchorPane.topAnchor="143.0" />
+      <TextField fx:id="tNumPowerAtorney" layoutX="194.0" layoutY="88.0" AnchorPane.topAnchor="88.0" />
+      <Label layoutX="193.0" layoutY="71.0" text="* Номер доверенности" AnchorPane.topAnchor="71.0" />
+      <Label layoutX="357.0" layoutY="71.0" text="* Дата окончани доверенности" AnchorPane.leftAnchor="357.0" />
+      <DatePicker fx:id="dpDateEndNumPowAtt" layoutX="357.0" layoutY="88.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.leftAnchor="357.0" />
+      <Label layoutX="193.0" layoutY="126.0" text="* Дата возврата" AnchorPane.topAnchor="126.0" />
+      <DatePicker fx:id="dpDateBack" layoutX="193.0" layoutY="143.0" prefHeight="25.0" prefWidth="150.0" AnchorPane.topAnchor="143.0" />
+      <TextField fx:id="tMilleage" layoutX="194.0" layoutY="31.0" />
+      <Label layoutX="193.0" layoutY="14.0" text="Пробег" />
+      <Separator layoutX="-1.0" layoutY="175.0" prefHeight="25.0" prefWidth="542.0" />
+      <TextField fx:id="tConfidant" layoutX="24.0" layoutY="224.0" prefWidth="150.0" />
+      <Label layoutX="236.0" layoutY="192.0" text="Временное поле" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" />
+      <Label layoutX="24.0" layoutY="201.0" text="* Оператор" AnchorPane.topAnchor="206.0" />
+      <Label layoutX="357.0" layoutY="200.0" text="Комментарий" AnchorPane.topAnchor="206.0" />
+      <TextField fx:id="tComment" layoutX="357.0" layoutY="223.0" prefWidth="150.0" />
+      <Button fx:id="btnCancel" layoutX="436.0" layoutY="265.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Отмена" AnchorPane.rightAnchor="10.0" />
+      <Button fx:id="btnAddRec" layoutX="340.0" layoutY="265.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Добавить..." />
+   </children>
+</AnchorPane>

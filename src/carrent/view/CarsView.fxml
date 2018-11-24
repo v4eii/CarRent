@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="carsPane" prefHeight="686.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carrent.view.controllers.CarsViewController">
+   <center>
+      <TableView fx:id="carTable" editable="true" prefHeight="714.0" prefWidth="1036.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn fx:id="colIdCar" editable="false" minWidth="-Infinity" prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="212.0" text="Автомобиль">
+               <columns>
+                  <TableColumn fx:id="colMake" prefWidth="150.0" text="Марка" />
+                  <TableColumn fx:id="colModel" prefWidth="150.0" text="Модель" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="colDateRelease" prefWidth="103.0" text="Дата выпуска" />
+            <TableColumn fx:id="colVin" prefWidth="173.0" text="VIN" />
+            <TableColumn fx:id="colRegNum" prefWidth="129.0" text="Гос. №" />
+            <TableColumn prefWidth="183.0" text="Дата окончания">
+               <columns>
+                  <TableColumn fx:id="colKasko" prefWidth="75.0" text="КАСКО" />
+                  <TableColumn fx:id="colOsago" prefWidth="75.0" text="ОСАГО" />
+                  <TableColumn fx:id="colTi" prefWidth="75.0" text="Техосмотр" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="colDriveLength" prefWidth="91.0" text="Пробег" />
+            <TableColumn fx:id="colStat" prefWidth="94.0" text="Статус" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="cmAddRecord" mnemonicParsing="false" text="Добавить запись" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="cmSaveChanges" mnemonicParsing="false" text="Сохранить изменения" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="cmDelRecord" mnemonicParsing="false" text="Удалить запись" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+   </center>
+</BorderPane>

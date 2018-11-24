@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="bPane" prefHeight="574.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carrent.view.controllers.RefsViewController">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+            <Label text="Справочник" />
+            <ComboBox fx:id="cbRefsName" prefHeight="25.0" prefWidth="234.0" promptText="Выберите справочник" />
+          <Button fx:id="addRefs" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" text="Button">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/book_blue_add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <TableView fx:id="refsTable" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colIdRef" prefWidth="123.0" text="Код значения" />
+          <TableColumn fx:id="colRefName" minWidth="0.0" prefWidth="275.0" text="Наименование" />
+            <TableColumn prefWidth="58.0" text="Дата">
+               <columns>
+                  <TableColumn fx:id="colDateBegin" prefWidth="100.0" text="Начала" />
+                  <TableColumn fx:id="colDateCancel" prefWidth="100.0" text="Отмены" />
+               </columns>
+            </TableColumn>
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="cmAddRecord" mnemonicParsing="false" text="Добавить запись" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="cmSaveChanges" mnemonicParsing="false" text="Сохранить изменения" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="cmDelRecord" mnemonicParsing="false" text="Удалить запись" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+   </center>
+</BorderPane>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="bPane" prefHeight="674.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carrent.view.controllers.UsersViewController">
+   <center>
+      <TableView fx:id="usersTable" editable="true" prefHeight="510.0" prefWidth="736.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="75.0" text="ID" visible="false" />
+          <TableColumn fx:id="colName" prefWidth="243.0" text="Пользователь" />
+            <TableColumn fx:id="colPassword" prefWidth="161.0" text="Пароль" />
+            <TableColumn fx:id="colRole" prefWidth="195.0" text="Доступ" />
+            <TableColumn prefWidth="98.0" text="Дата">
+               <columns>
+                  <TableColumn fx:id="colDateCreate" prefWidth="75.0" text="Создания" />
+                  <TableColumn fx:id="colDateLock" prefWidth="75.0" text="Блокировки" />
+               </columns>
+            </TableColumn>
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="cmAdd" mnemonicParsing="false" text="Добавить запись" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="cmSave" mnemonicParsing="false" text="Сохранить изменения" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="cmDel" mnemonicParsing="false" text="Удалить запись" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+   </center>
+</BorderPane>

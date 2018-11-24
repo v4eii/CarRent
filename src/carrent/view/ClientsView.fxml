@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="bPane" prefHeight="802.0" prefWidth="1214.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carrent.view.controllers.ClientsViewController">
+   <center>
+      <TableView fx:id="clientsTable" editable="true" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colIdClient" prefWidth="45.0" text="ID" visible="false" />
+          <TableColumn prefWidth="255.0" text="Клиент">
+               <columns>
+                  <TableColumn fx:id="colLastName" prefWidth="100.0" text="Фамилия" />
+                  <TableColumn fx:id="colFirstName" prefWidth="100.0" text="Имя" />
+                  <TableColumn fx:id="colMiddleName" prefWidth="100.0" text="Отчество" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="colBirthday" prefWidth="101.0" text="Дата рождения" />
+            <TableColumn fx:id="colPhoneNumber" prefWidth="151.0" text="Номер телефона" />
+            <TableColumn prefWidth="815.0" text="Документ">
+               <columns>
+                  <TableColumn fx:id="colDocType" prefWidth="100.0" text="Тип документа" />
+                  <TableColumn fx:id="colSeriesDoc" prefWidth="75.0" text="Серия" />
+                  <TableColumn fx:id="colNumberDoc" prefWidth="100.0" text="Номер" />
+                  <TableColumn fx:id="colDocIssuedDate" prefWidth="100.0" text="Дата выдачи" />
+                  <TableColumn fx:id="colDocIssuedBy" prefWidth="450.0" text="Кем выдан" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="colRegistration" prefWidth="500.0" text="Адрес регистрации" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="cmAddRecord" mnemonicParsing="false" text="Добавить запись" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="cmSaveChanges" mnemonicParsing="false" text="Сохранить изменения" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="cmDelRecord" mnemonicParsing="false" text="Удалить запись" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+   </center>
+</BorderPane>
