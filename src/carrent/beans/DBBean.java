@@ -22,7 +22,7 @@ import org.controlsfx.dialog.ExceptionDialog;
 
 /**
  *
- * @author v4e
+ * @author v4e here
  */
 public class DBBean {
     
