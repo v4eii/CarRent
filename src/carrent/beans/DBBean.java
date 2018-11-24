@@ -22,7 +22,7 @@ import org.controlsfx.dialog.ExceptionDialog;
 
 /**
  *
- * @author v4e here
+ * @author v4e
  */
 public class DBBean {
     
@@ -101,7 +101,7 @@ public class DBBean {
         }
     }
     
-    //<editor-fold defaultstate="collapsed" desc="Геттеры/сеттеры usr, psw, srv">
+    //<editor-fold defaultstate="collapsed" desc="ГѓГҐГІГІГҐГ°Г»/Г±ГҐГІГІГҐГ°Г» usr, psw, srv">
     
     public void setUser(String usr)
     {
@@ -145,12 +145,12 @@ public class DBBean {
     
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Диалоговые окна">
+    //<editor-fold defaultstate="collapsed" desc="Г„ГЁГ Г«Г®ГЈГ®ГўГ»ГҐ Г®ГЄГ­Г ">
     
     public void showErrDialog(Throwable ex, String header, String content)
     {
         ExceptionDialog dialog = new ExceptionDialog(ex);
-        dialog.setTitle("Ошибка");
+        dialog.setTitle("ГЋГёГЁГЎГЄГ ");
         dialog.setHeaderText(header);
         dialog.initStyle(StageStyle.UTILITY);
         if (!content.isEmpty())
@@ -162,7 +162,7 @@ public class DBBean {
     public void showInfoDialog(String header, String content)
     {
         Dialog dialog = new Alert(Alert.AlertType.INFORMATION);
-        dialog.setTitle("Информация");
+        dialog.setTitle("Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї");
         dialog.setHeaderText(header);
         dialog.initStyle(StageStyle.UTILITY);
         if (!content.isEmpty())
@@ -176,7 +176,7 @@ public class DBBean {
         Dialog dialog = new Alert(Alert.AlertType.WARNING);
         dialog.initStyle(StageStyle.UTILITY);
         dialog.setHeaderText(header);
-        dialog.setTitle("Предупреждение");
+        dialog.setTitle("ГЏГ°ГҐГ¤ГіГЇГ°ГҐГ¦Г¤ГҐГ­ГЁГҐ");
         if (!content.isEmpty())
             dialog.setContentText(content);
         
@@ -209,7 +209,7 @@ public class DBBean {
             
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Геттеры контроллеров">
+    //<editor-fold defaultstate="collapsed" desc="ГѓГҐГІГІГҐГ°Г» ГЄГ®Г­ГІГ°Г®Г«Г«ГҐГ°Г®Гў">
     
     public CarsJpaController getCarsJPACtrl()
     {
