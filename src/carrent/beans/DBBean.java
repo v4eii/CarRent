@@ -101,7 +101,7 @@ public class DBBean {
         }
     }
     
-    //<editor-fold defaultstate="collapsed" desc="Ãåòòåðû/ñåòòåðû usr, psw, srv">
+    //<editor-fold defaultstate="collapsed" desc="ЫЫЫ usr, psw, srv">
     
     public void setUser(String usr)
     {
