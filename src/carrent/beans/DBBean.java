@@ -101,7 +101,7 @@ public class DBBean {
         }
     }
     
-    //<editor-fold defaultstate="collapsed" desc="ГѓГҐГІГІГҐГ°Г»/Г±ГҐГІГІГҐГ°Г» usr, psw, srv">
+    //<editor-fold defaultstate="collapsed" desc="Геттеры/Сеттеры usr, psw, srv">
     
     public void setUser(String usr)
     {
@@ -145,12 +145,12 @@ public class DBBean {
     
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Г„ГЁГ Г«Г®ГЈГ®ГўГ»ГҐ Г®ГЄГ­Г ">
+    //<editor-fold defaultstate="collapsed" desc="Диалоговые окна">
     
     public void showErrDialog(Throwable ex, String header, String content)
     {
         ExceptionDialog dialog = new ExceptionDialog(ex);
-        dialog.setTitle("ГЋГёГЁГЎГЄГ ");
+        dialog.setTitle("Ошибка");
         dialog.setHeaderText(header);
         dialog.initStyle(StageStyle.UTILITY);
         if (!content.isEmpty())
@@ -162,7 +162,7 @@ public class DBBean {
     public void showInfoDialog(String header, String content)
     {
         Dialog dialog = new Alert(Alert.AlertType.INFORMATION);
-        dialog.setTitle("Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї");
+        dialog.setTitle("Информация");
         dialog.setHeaderText(header);
         dialog.initStyle(StageStyle.UTILITY);
         if (!content.isEmpty())
@@ -176,7 +176,7 @@ public class DBBean {
         Dialog dialog = new Alert(Alert.AlertType.WARNING);
         dialog.initStyle(StageStyle.UTILITY);
         dialog.setHeaderText(header);
-        dialog.setTitle("ГЏГ°ГҐГ¤ГіГЇГ°ГҐГ¦Г¤ГҐГ­ГЁГҐ");
+        dialog.setTitle("Внимание");
         if (!content.isEmpty())
             dialog.setContentText(content);
         
@@ -209,7 +209,7 @@ public class DBBean {
             
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="ГѓГҐГІГІГҐГ°Г» ГЄГ®Г­ГІГ°Г®Г«Г«ГҐГ°Г®Гў">
+    //<editor-fold defaultstate="collapsed" desc="Геттеры контроллеров">
     
     public CarsJpaController getCarsJPACtrl()
     {
