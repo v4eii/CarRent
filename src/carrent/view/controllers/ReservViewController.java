@@ -197,7 +197,9 @@ public class ReservViewController implements Initializable {
             {
                 deliver = addIssueCtrl.getDelivery();
                 Delivery d = new Delivery();
-                //Deliv deliv = new Deliv(deliver);
+//                Deliv deliv = new Deliv(deliver, DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(3, deliver.getCars().getIdMake())).getRefName().concat(
+//                    " " + DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(2, deliver.getCars().getIdModel())).getRefName()).concat(
+//                    " " + deliver.getCars().getNumberregistration()));
                 
                 d.setName(DBBean.getInstance().getClientJPACtrl().findClients(deliver.getDeliveryCarPK().getIdClient()).getLastName().concat(
                         " " + DBBean.getInstance().getClientJPACtrl().findClients(deliver.getDeliveryCarPK().getIdClient()).getFirstName().concat(
@@ -209,7 +211,7 @@ public class ReservViewController implements Initializable {
                     " " + DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(2, deliver.getCars().getIdModel())).getRefName()).concat(
                     " " + deliver.getCars().getNumberregistration())))
                     {
-                       // d.addActivity(layer, deliv);
+                        //d.addActivity(layer, deliv);
                         val.getChildren().add(d);
                     }
                 }
