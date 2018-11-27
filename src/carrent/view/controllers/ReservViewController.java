@@ -17,6 +17,7 @@ import com.flexganttfx.view.graphics.renderer.ActivityBarRenderer;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -65,8 +66,11 @@ public class ReservViewController implements Initializable {
         public Deliv(DeliveryCar obj, String name)
         {
             super(name);
-            setStartTime(obj.getDateDelivery().toInstant());
-            setEndTime(obj.getDateBack().toInstant());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(obj.getDateDelivery());
+            setStartTime(cal.toInstant());
+            cal.setTime(obj.getDateBack());
+            setEndTime(cal.toInstant());
             setUserObject(obj);
         }
         
@@ -197,9 +201,9 @@ public class ReservViewController implements Initializable {
             {
                 deliver = addIssueCtrl.getDelivery();
                 Delivery d = new Delivery();
-//                Deliv deliv = new Deliv(deliver, DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(3, deliver.getCars().getIdMake())).getRefName().concat(
-//                    " " + DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(2, deliver.getCars().getIdModel())).getRefName()).concat(
-//                    " " + deliver.getCars().getNumberregistration()));
+                Deliv deliv = new Deliv(deliver, DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(3, deliver.getCars().getIdMake())).getRefName().concat(
+                    " " + DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(2, deliver.getCars().getIdModel())).getRefName()).concat(
+                    " " + deliver.getCars().getNumberregistration()));
                 
                 d.setName(DBBean.getInstance().getClientJPACtrl().findClients(deliver.getDeliveryCarPK().getIdClient()).getLastName().concat(
                         " " + DBBean.getInstance().getClientJPACtrl().findClients(deliver.getDeliveryCarPK().getIdClient()).getFirstName().concat(
@@ -211,8 +215,8 @@ public class ReservViewController implements Initializable {
                     " " + DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(2, deliver.getCars().getIdModel())).getRefName()).concat(
                     " " + deliver.getCars().getNumberregistration())))
                     {
-                        //d.addActivity(layer, deliv);
                         val.getChildren().add(d);
+                        d.addActivity(layer, deliv);
                     }
                 }
             }

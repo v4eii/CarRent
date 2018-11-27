@@ -99,6 +99,7 @@ public class RefsViewController implements Initializable {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setDateCreate(tmp);
             if (event.getTableView().getItems().get(event.getTablePosition().getRow()).rec_state != DBBean.RECORD_STATE.NEW)
                 event.getTableView().getItems().get(event.getTablePosition().getRow()).rec_state = DBBean.RECORD_STATE.EDIT;
+            refsChanged.setValue(Boolean.TRUE);
         });
         
         colDateCancel.setCellValueFactory((TableColumn.CellDataFeatures<Refs, String> param) -> new ReadOnlyObjectWrapper<>(param.getValue() == null ? "" : (param.getValue().getDateCancel() == null ? "" : format.format(param.getValue().getDateCancel()))));
@@ -117,6 +118,7 @@ public class RefsViewController implements Initializable {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setDateCancel(tmp);
             if (event.getTableView().getItems().get(event.getTablePosition().getRow()).rec_state != DBBean.RECORD_STATE.NEW)
                 event.getTableView().getItems().get(event.getTablePosition().getRow()).rec_state = DBBean.RECORD_STATE.EDIT;
+            refsChanged.setValue(Boolean.TRUE);
         });
         
         colIdRef.setCellValueFactory((TableColumn.CellDataFeatures<Refs, Integer> param) -> new ReadOnlyObjectWrapper<>(param.getValue() == null ? 0 : param.getValue().getRefsPK().getIdRef()));
@@ -138,6 +140,7 @@ public class RefsViewController implements Initializable {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setRefsPK(new RefsPK(cbRefsName.getSelectionModel().getSelectedIndex(), event.getNewValue()));
             if (event.getTableView().getItems().get(event.getTablePosition().getRow()).rec_state != DBBean.RECORD_STATE.NEW)
                 event.getTableView().getItems().get(event.getTablePosition().getRow()).rec_state = DBBean.RECORD_STATE.EDIT;
+            refsChanged.setValue(Boolean.TRUE);
         });
         //</editor-fold>
         cbRefsName.setItems(FXCollections.observableArrayList(DBBean.getInstance().getRefsNameJPACtrl().findRefsNameEntities()));
