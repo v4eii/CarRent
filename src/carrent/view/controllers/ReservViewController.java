@@ -140,6 +140,8 @@ public class ReservViewController implements Initializable {
             DBBean.getInstance().showWarningDialog("Внимание", "Перемещение поля запрещено");
         });*/
         
+        //graphic.setOnActivityDragStarted(value);
+        
         layer = new Layer("Резервирование");
         
         for (Cars val : DBBean.getInstance().getCarsJPACtrl().findCarsEntities())
