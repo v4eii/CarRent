@@ -51,12 +51,6 @@ public class DBBean {
         return emf == null ? emf = Persistence.createEntityManagerFactory("CarRentPU") : emf;
     }
     
-    public void initEMF()
-    {
-        if (!emf.isOpen())
-            emf = Persistence.createEntityManagerFactory("CarRentPU");
-    }
-    
     public static DBBean getInstance()
     {
         synchronized (DBBean.class)
@@ -99,6 +93,12 @@ public class DBBean {
         {
             return "";
         }
+    }
+    
+    public void setEMFNull()
+    {
+        if (emf != null)
+            emf = null;
     }
     
     //<editor-fold defaultstate="collapsed" desc="Геттеры/Сеттеры usr, psw, srv">

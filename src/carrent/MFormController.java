@@ -216,18 +216,19 @@ public class MFormController implements Initializable {
     {
         if (DBBean.getInstance().showConfirmDialog("Подтверждение", "Отключение", "Вы уверены что хотите отключиться от базы данных?").get() == ButtonType.OK)
         {
-//            DBBean.getInstance().getEMF().close();
-//            mCar.setVisible(false);
-//            mClient.setVisible(false);
-//            mRefs.setVisible(false);
-//            mReserv.setVisible(false);
-//            mUsers.setVisible(false);
+            DBBean.getInstance().getEMF().close();
+            DBBean.getInstance().setEMFNull();
+            mCar.setVisible(false);
+            mClient.setVisible(false);
+            mRefs.setVisible(false);
+            mReserv.setVisible(false);
+            mUsers.setVisible(false);
         }
     };
     
     private final EventHandler<ActionEvent> mConnectEvent = (ActionEvent event) ->
     {
-//        DBBean.getInstance().initEMF();
+//        DBBean.getInstance()  TODO Дописать!
 //        mCar.setVisible(true);
 //        mClient.setVisible(true);
 //        mRefs.setVisible(true);
