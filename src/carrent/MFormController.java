@@ -27,11 +27,11 @@ import javafx.scene.layout.BorderPane;
 public class MFormController implements Initializable {
 
     
-    private CarsViewController carsViewCtrl;
+    private static CarsViewController carsViewCtrl;
     private RefsViewController refsViewCtrl;
     private UsersViewController usersViewCtrl;
-    private ClientsViewController clientsViewCtrl;
-    private ReservViewController reservViewCtrl;
+    private static ClientsViewController clientsViewCtrl;
+    private static ReservViewController reservViewCtrl;
     
     @FXML
     private MenuItem mConnect, 
@@ -236,4 +236,14 @@ public class MFormController implements Initializable {
 //        mUsers.setVisible(true);
     };
 
+    public static CarsViewController getCarsViewCtrl()
+    {
+        return carsViewCtrl;
+    }
+
+    public static ClientsViewController getClientsViewCtrl()
+    {
+        return clientsViewCtrl;
+    }
+    
 }

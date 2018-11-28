@@ -92,7 +92,16 @@ public class CarsViewController implements Initializable {
                 }
                 return null;
             }
-        }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(3))));
+        }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(3))
+                .filtered((Refs t) ->
+        {
+            Date tmp = t.getDateCancel();
+            if (tmp != null && tmp.before(new Date()))
+            {
+                return false;
+            }
+            return true;
+        })));
         colMake.setOnEditCommit((TableColumn.CellEditEvent<Cars, Refs> event) ->
         {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdMake(event.getNewValue().getRefsPK().getIdRef());
@@ -119,7 +128,16 @@ public class CarsViewController implements Initializable {
                 }
                 return null;
             }
-        }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(2))));
+        }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(2))
+                .filtered((Refs t) ->
+        {
+            Date tmp = t.getDateCancel();
+            if (tmp != null && tmp.before(new Date()))
+            {
+                return false;
+            }
+            return true;
+        })));
         colModel.setOnEditCommit((TableColumn.CellEditEvent<Cars, Refs> event) ->
         {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdModel(event.getNewValue().getRefsPK().getIdRef());
@@ -146,7 +164,16 @@ public class CarsViewController implements Initializable {
                 }
                 return null;
             }
-        }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(5))));
+        }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(5))
+                .filtered((Refs t) ->
+        {
+            Date tmp = t.getDateCancel();
+            if (tmp != null && tmp.before(new Date()))
+            {
+                return false;
+            }
+            return true;
+        })));
         colStat.setOnEditCommit((TableColumn.CellEditEvent<Cars, Refs> event) ->
         {
             event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdStat(event.getNewValue().getRefsPK().getIdRef());
@@ -290,7 +317,21 @@ public class CarsViewController implements Initializable {
         carTable.setItems(carsData);
         carTable.getSelectionModel().select(0);
     }
-    
+
+    public TableColumn<Cars, Refs> getColMake()
+    {
+        return colMake;
+    }
+
+    public TableColumn<Cars, Refs> getColModel()
+    {
+        return colModel;
+    }
+
+    public TableColumn<Cars, Refs> getColStat()
+    {
+        return colStat;
+    }
     //<editor-fold defaultstate="collapsed" desc="Обработчики контекстного меню">
     private final EventHandler<ActionEvent> addRecord = (ActionEvent event) ->
     {

@@ -1,6 +1,9 @@
 package carrent.view.controllers;
 
+import carrent.MFormController;
 import carrent.beans.DBBean;
+import carrent.entity.Cars;
+import carrent.entity.Clients;
 import carrent.entity.Refs;
 import carrent.entity.RefsName;
 import carrent.entity.RefsPK;
@@ -11,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -30,6 +34,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.StageStyle;
@@ -61,6 +66,7 @@ public class RefsViewController implements Initializable {
     private SimpleBooleanProperty refsChanged = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty usersRole = new SimpleBooleanProperty(Boolean.TRUE);
     private final SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+    private boolean corrected = true;
     
     /**
      * Initializes the controller class.
@@ -251,49 +257,201 @@ public class RefsViewController implements Initializable {
     private final EventHandler<ActionEvent> saveRecordEvent = (ActionEvent event) ->
     {
         ObservableList<Refs> modifyList = refsTable.getItems().filtered((Refs t) -> t.rec_state != DBBean.RECORD_STATE.SAVED);
+        modifyList.forEach(new Consumer<Refs>()
+        {
+            @Override
+            public void accept(Refs t)
+            {
+                if (t.getRefsPK().getIdRef() == 0)
+                {
+                    DBBean.getInstance().showWarningDialog("Внимание", "Укажите пропущенные кодовые значения");
+                    corrected = false;
+                    return;
+                }
+            }
+        });
         modifyList.forEach((Refs t) ->
         {
-            switch(t.rec_state)
+            if (corrected)
             {
-                case NEW:
+                switch (t.rec_state)
                 {
-                    try
+                    case NEW:
                     {
-                        DBBean.getInstance().getRefsJPACtrl().create(t);
-                        t.rec_state = DBBean.RECORD_STATE.SAVED;
+                        try
+                        {
+                            DBBean.getInstance().getRefsJPACtrl().create(t);
+                            t.rec_state = DBBean.RECORD_STATE.SAVED;
+                        }
+                        catch (NonexistentEntityException ex)
+                        {
+                            DBBean.getInstance().showErrDialog(ex, "Ошибка внесения записи", "");
+                        }
+                        catch (Exception ex)
+                        {
+                            DBBean.getInstance().showErrDialog(ex, "Ошибка", "");
+                        }
+                        break;
                     }
-                    catch (NonexistentEntityException ex)
+                    case EDIT:
                     {
-                        DBBean.getInstance().showErrDialog(ex, "Ошибка изменения записи!", "");
+                        try
+                        {
+                            DBBean.getInstance().getRefsJPACtrl().edit(t);
+                            t.rec_state = DBBean.RECORD_STATE.SAVED;
+                        }
+                        catch (NonexistentEntityException ex)
+                        {
+                            DBBean.getInstance().showErrDialog(ex, "Ошибка изменения записи", "");
+                        }
+                        catch (Exception ex)
+                        {
+                            DBBean.getInstance().showErrDialog(ex, "Ошибка", "");
+                        }
+                        break;
                     }
-                    catch (Exception ex)
-                    {
-                        DBBean.getInstance().showErrDialog(ex, "Ошибка", "");
-                    }
-                    break;
+
                 }
-                case EDIT:
-                {
-                    try
-                    {
-                        DBBean.getInstance().getRefsJPACtrl().edit(t);
-                        t.rec_state = DBBean.RECORD_STATE.SAVED;
-                    }
-                    catch (NonexistentEntityException ex)
-                    {
-                        DBBean.getInstance().showErrDialog(ex, "Ошибка изменения записи!", "");
-                    }
-                    catch (Exception ex)
-                    {
-                        DBBean.getInstance().showErrDialog(ex, "Ошибка", "");
-                    }
-                    break;
-                }
-                
             }
         });
         refsTable.refresh();
-        refsChanged.setValue(Boolean.FALSE);
+        if (corrected)
+            refsChanged.setValue(Boolean.FALSE);
+        else
+            refsChanged.setValue(Boolean.TRUE);
+        corrected = true;
+        if (MFormController.getCarsViewCtrl() != null)
+        {
+            //<editor-fold defaultstate="collapsed" desc="Переинициализация справочных колонок">
+            MFormController.getCarsViewCtrl().getColMake().setCellValueFactory((TableColumn.CellDataFeatures<Cars, Refs> param) -> new ReadOnlyObjectWrapper<>(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(3, param.getValue() == null ? 0 : param.getValue().getIdMake()))));
+            MFormController.getCarsViewCtrl().getColMake().setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Refs>() {
+                @Override
+                public String toString(Refs object)
+                {
+                    return object == null ? "" : object.getRefName();
+                }
+
+                @Override
+                public Refs fromString(String string)
+                {
+                    for (Refs val : DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(3))
+                    {
+                        if (val.getRefName().equals(string))
+                        {
+                            return val;
+                        }
+                    }
+                    return null;
+                }
+            }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(3))
+                    .filtered((Refs t) ->
+                    {
+                        Date tmp = t.getDateCancel();
+                        if (tmp != null && tmp.before(new Date()))
+                        {
+                            return false;
+                        }
+                        return true;
+                    })));
+
+            MFormController.getCarsViewCtrl().getColModel().setCellValueFactory((TableColumn.CellDataFeatures<Cars, Refs> param) -> new ReadOnlyObjectWrapper<>(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(2, param.getValue() == null ? 0 : param.getValue().getIdModel()))));
+            MFormController.getCarsViewCtrl().getColModel().setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Refs>() {
+                @Override
+                public String toString(Refs object)
+                {
+                    return object == null ? "" : object.getRefName();
+                }
+
+                @Override
+                public Refs fromString(String string)
+                {
+                    for (Refs val : DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(2))
+                    {
+                        if (val.getRefName().equals(string))
+                        {
+                            return val;
+                        }
+                    }
+                    return null;
+                }
+            }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(2))
+                    .filtered((Refs t) ->
+                    {
+                        Date tmp = t.getDateCancel();
+                        if (tmp != null && tmp.before(new Date()))
+                        {
+                            return false;
+                        }
+                        return true;
+                    })));
+
+            MFormController.getCarsViewCtrl().getColStat().setCellValueFactory((TableColumn.CellDataFeatures<Cars, Refs> param) -> new ReadOnlyObjectWrapper<>(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(5, param.getValue() == null ? 0 : param.getValue().getIdStat()))));
+            MFormController.getCarsViewCtrl().getColStat().setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Refs>() {
+                @Override
+                public String toString(Refs object)
+                {
+                    return object == null ? "" : object.getRefName();
+                }
+
+                @Override
+                public Refs fromString(String string)
+                {
+                    for (Refs val : DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(5))
+                    {
+                        if (val.getRefName().equals(string))
+                        {
+                            return val;
+                        }
+                    }
+                    return null;
+                }
+            }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(5))
+                    .filtered((Refs t) ->
+                    {
+                        Date tmp = t.getDateCancel();
+                        if (tmp != null && tmp.before(new Date()))
+                        {
+                            return false;
+                        }
+                        return true;
+                    })));
+            //</editor-fold>
+        }
+        if (MFormController.getClientsViewCtrl() != null)
+        {
+            //<editor-fold defaultstate="collapsed" desc="Переинициализация справочных колонок">
+            MFormController.getClientsViewCtrl().getColDocType().setCellValueFactory((TableColumn.CellDataFeatures<Clients, Refs> param) -> new ReadOnlyObjectWrapper<>(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(1, param.getValue() == null ? 0 : param.getValue().getIdDoc()))));
+            MFormController.getClientsViewCtrl().getColDocType().setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Refs>() {
+                @Override
+                public String toString(Refs object)
+                {
+                    return object == null ? "" : object.getRefName();
+                }
+
+                @Override
+                public Refs fromString(String string)
+                {
+                    for (Refs val : DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(1))
+                    {
+                        if (val.getRefName().equals(string))
+                        {
+                            return val;
+                        }
+                    }
+                    return null;
+                }
+            }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(1))
+                    .filtered((Refs t) ->
+                    {
+                        Date tmp = t.getDateCancel();
+                        if (tmp != null && tmp.before(new Date()))
+                        {
+                            return false;
+                        }
+                        return true;
+                    })));
+            //</editor-fold>
+        }
     };
     
     private final EventHandler<ActionEvent> delRecordEvent = new EventHandler<ActionEvent>()
@@ -313,32 +471,148 @@ public class RefsViewController implements Initializable {
                     }
                     case EDIT:
                     {
-                        try
-                        {
-                            DBBean.getInstance().getRefsJPACtrl().destroy(obj.getRefsPK());
-                            refsData.remove(obj);
-                        }
-                        catch (NonexistentEntityException ex)
-                        {
-                            DBBean.getInstance().showErrDialog(ex, "Ошибка удаления записи", "");
-                        }
+                        DBBean.getInstance().showWarningDialog("Предупреждение", "Данная запись может использоваться. Для блокировки укажите дату.");
                         break;
                     }
                     case SAVED:
                     {
-                        try
-                        {
-                            DBBean.getInstance().getRefsJPACtrl().destroy(obj.getRefsPK());
-                            refsData.remove(obj);
-                        }
-                        catch (NonexistentEntityException ex)
-                        {
-                            DBBean.getInstance().showErrDialog(ex, "Ошибка удаления записи", "");
-                        }
+                        DBBean.getInstance().showWarningDialog("Предупреждение", "Данная запись может использоваться. Для блокировки укажите дату.");
                         break;
                     }
                 }
                 refsTable.refresh();
+                if (MFormController.getCarsViewCtrl() != null)
+                {
+                    //<editor-fold defaultstate="collapsed" desc="Переинициализация справочных колонок">
+                    MFormController.getCarsViewCtrl().getColMake().setCellValueFactory((TableColumn.CellDataFeatures<Cars, Refs> param) -> new ReadOnlyObjectWrapper<>(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(3, param.getValue() == null ? 0 : param.getValue().getIdMake()))));
+                    MFormController.getCarsViewCtrl().getColMake().setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Refs>() {
+                        @Override
+                        public String toString(Refs object)
+                        {
+                            return object == null ? "" : object.getRefName();
+                        }
+
+                        @Override
+                        public Refs fromString(String string)
+                        {
+                            for (Refs val : DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(3))
+                            {
+                                if (val.getRefName().equals(string))
+                                {
+                                    return val;
+                                }
+                            }
+                            return null;
+                        }
+                    }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(3))
+                            .filtered((Refs t) ->
+                            {
+                                Date tmp = t.getDateCancel();
+                                if (tmp != null && tmp.before(new Date()))
+                                {
+                                    return false;
+                                }
+                                return true;
+                            })));
+
+                    MFormController.getCarsViewCtrl().getColModel().setCellValueFactory((TableColumn.CellDataFeatures<Cars, Refs> param) -> new ReadOnlyObjectWrapper<>(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(2, param.getValue() == null ? 0 : param.getValue().getIdModel()))));
+                    MFormController.getCarsViewCtrl().getColModel().setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Refs>() {
+                        @Override
+                        public String toString(Refs object)
+                        {
+                            return object == null ? "" : object.getRefName();
+                        }
+
+                        @Override
+                        public Refs fromString(String string)
+                        {
+                            for (Refs val : DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(2))
+                            {
+                                if (val.getRefName().equals(string))
+                                {
+                                    return val;
+                                }
+                            }
+                            return null;
+                        }
+                    }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(2))
+                            .filtered((Refs t) ->
+                            {
+                                Date tmp = t.getDateCancel();
+                                if (tmp != null && tmp.before(new Date()))
+                                {
+                                    return false;
+                                }
+                                return true;
+                            })));
+
+                    MFormController.getCarsViewCtrl().getColStat().setCellValueFactory((TableColumn.CellDataFeatures<Cars, Refs> param) -> new ReadOnlyObjectWrapper<>(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(5, param.getValue() == null ? 0 : param.getValue().getIdStat()))));
+                    MFormController.getCarsViewCtrl().getColStat().setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Refs>() {
+                        @Override
+                        public String toString(Refs object)
+                        {
+                            return object == null ? "" : object.getRefName();
+                        }
+
+                        @Override
+                        public Refs fromString(String string)
+                        {
+                            for (Refs val : DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(5))
+                            {
+                                if (val.getRefName().equals(string))
+                                {
+                                    return val;
+                                }
+                            }
+                            return null;
+                        }
+                    }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(5))
+                            .filtered((Refs t) ->
+                            {
+                                Date tmp = t.getDateCancel();
+                                if (tmp != null && tmp.before(new Date()))
+                                {
+                                    return false;
+                                }
+                                return true;
+                            })));
+                    //</editor-fold>
+                }
+                if (MFormController.getClientsViewCtrl() != null)
+                {
+                    //<editor-fold defaultstate="collapsed" desc="Переинициализация справочных колонок">
+                    MFormController.getClientsViewCtrl().getColDocType().setCellValueFactory((TableColumn.CellDataFeatures<Clients, Refs> param) -> new ReadOnlyObjectWrapper<>(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(1, param.getValue() == null ? 0 : param.getValue().getIdDoc()))));
+                    MFormController.getClientsViewCtrl().getColDocType().setCellFactory(ComboBoxTableCell.forTableColumn(new StringConverter<Refs>() {
+                        @Override
+                        public String toString(Refs object)
+                        {
+                            return object == null ? "" : object.getRefName();
+                        }
+
+                        @Override
+                        public Refs fromString(String string)
+                        {
+                            for (Refs val : DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(1))
+                            {
+                                if (val.getRefName().equals(string))
+                                {
+                                    return val;
+                                }
+                            }
+                            return null;
+                        }
+                    }, FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(1))
+                            .filtered((Refs t) ->
+                            {
+                                Date tmp = t.getDateCancel();
+                                if (tmp != null && tmp.before(new Date()))
+                                {
+                                    return false;
+                                }
+                                return true;
+                            })));
+                    //</editor-fold>
+                }
             }
         }
     };

@@ -235,6 +235,11 @@ public class ClientsViewController implements Initializable {
         clientsTable.setItems(clientData);
         clientsTable.getSelectionModel().select(0);
     }
+
+    public TableColumn<Clients, Refs> getColDocType()
+    {
+        return colDocType;
+    }
     
     //<editor-fold defaultstate="collapsed" desc="Обработчики контекстного меню">
     

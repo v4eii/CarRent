@@ -11,6 +11,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -92,7 +93,16 @@ public class AddIssueViewController implements Initializable {
                 return null;
             }
         });
-        cbReasonDeliv.getItems().addAll(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(6));
+        cbReasonDeliv.getItems().addAll(FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(6))
+                .filtered((Refs t) ->
+        {
+            java.util.Date tmp = t.getDateCancel();
+            if (tmp != null && tmp.before(new java.util.Date()))
+            {
+                return false;
+            }
+            return true;
+        }));
         cbReasonDeliv.setConverter(new StringConverter<Refs>() {
             @Override
             public String toString(Refs object)
