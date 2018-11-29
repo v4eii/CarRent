@@ -20,8 +20,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -43,7 +41,10 @@ import javafx.stage.Stage;
 public class ReservViewController implements Initializable {
 
     private AddIssueViewController addIssueCtrl;
-    private static Stage stage;
+    private DeleteIssueViewController deleteIssueCtrl;
+    
+    private static Stage addStage,
+                         deleteStage;
     
     class ModelObject<
             P extends Row<?,?,?>,
@@ -79,7 +80,8 @@ public class ReservViewController implements Initializable {
     @FXML
     private BorderPane bPane;
     @FXML
-    private Button btnAddDeliv;
+    private Button btnAddDeliv,
+                   btnDeleteDeliv;
     
     private AutoPark park;
     private Layer layer;
@@ -140,7 +142,7 @@ public class ReservViewController implements Initializable {
             DBBean.getInstance().showWarningDialog("Внимание", "Перемещение поля запрещено");
         });*/
         
-        //graphic.setOnActivityDragStarted(value);
+        //graphic.setOnActivityDragStarted(value);      //TODO можно дополнить запрет перемещения
         
         layer = new Layer("Резервирование");
         
@@ -173,6 +175,7 @@ public class ReservViewController implements Initializable {
         
         bPane.centerProperty().setValue(chart);
         btnAddDeliv.addEventHandler(ActionEvent.ACTION, addDelivEvent);
+        btnDeleteDeliv.addEventHandler(ActionEvent.ACTION, deleteDelivEvent);
     }
     
     public BorderPane getReservPane()
@@ -193,11 +196,11 @@ public class ReservViewController implements Initializable {
             addIssueCtrl.setReservationObj(reserv);
             
             Scene scene = new Scene(aPane);
-            stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Добавление записи");
-            stage.getIcons().add(new Image("/carrent/resources/document_new.png"));
-            stage.showAndWait();
+            addStage = new Stage();
+            addStage.setScene(scene);
+            addStage.setTitle("Добавление записи");
+            addStage.getIcons().add(new Image("/carrent/resources/document_new.png"));
+            addStage.showAndWait();
             
             if (addIssueCtrl.getRecordAdd())
             {
@@ -225,13 +228,43 @@ public class ReservViewController implements Initializable {
         }
         catch (IOException ex)
         {
-            Logger.getLogger(ReservViewController.class.getName()).log(Level.SEVERE, null, ex);
+            DBBean.getInstance().showErrDialog(ex, "Ошибка загрузки формы добавления", "");
+        }
+    };
+    
+    private final EventHandler<ActionEvent> deleteDelivEvent = new EventHandler<ActionEvent>()
+    {
+        @Override
+        public void handle(ActionEvent event)
+        {
+            try
+            {
+                FXMLLoader loader = new FXMLLoader(ReservViewController.this.getClass().getResource("/carrent/view/DeleteIssueView.fxml"));
+                BorderPane bPane = loader.load();
+                deleteIssueCtrl = loader.getController();
+                deleteIssueCtrl.initData();
+                Scene scene = new Scene(bPane);                 //TODO Дописать редактирование графика после удаления
+                deleteStage = new Stage();
+                deleteStage.setScene(scene);
+                deleteStage.setTitle("Удаление записи");
+                deleteStage.getIcons().add(new Image("/carrent/resources/document_delete.png"));
+                deleteStage.showAndWait();
+            }
+            catch (IOException ex)
+            {
+                DBBean.getInstance().showErrDialog(ex, "Ошибка загрузки формы добавления", "");
+            }
         }
     };
 
-    public static Stage getStage()
+    public static Stage getDeleteStage()
     {
-        return stage;
+        return deleteStage;
+    }
+
+    public static Stage getAddStage()
+    {
+        return addStage;
     }
     
 }

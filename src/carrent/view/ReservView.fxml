@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -19,6 +20,15 @@
                      </image>
                   </ImageView>
                </graphic></Button>
+            <Button fx:id="btnDeleteDeliv" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Button">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/document_delete.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
         </items>
       </ToolBar>
    </top>

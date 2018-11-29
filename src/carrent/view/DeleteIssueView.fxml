@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1140.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carrent.view.controllers.DeleteIssueViewController">
+   <center>
+      <TableView fx:id="delivTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colIdContract" prefWidth="111.0" text="Номер контракта" />
+          <TableColumn fx:id="colCar" prefWidth="165.0" text="Автомобиль" />
+            <TableColumn fx:id="colClient" prefWidth="205.0" text="Клиент" />
+            <TableColumn prefWidth="288.0" text="Доверенность">
+               <columns>
+                  <TableColumn fx:id="colNumPowerAttorney" prefWidth="77.0" text="Номер" />
+                  <TableColumn fx:id="colDateEndPowAtt" prefWidth="141.0" text="Дата окончания" />
+               </columns>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="Дата">
+               <columns>
+                  <TableColumn fx:id="colDateDeliv" prefWidth="75.0" text="Выдачи" />
+                  <TableColumn fx:id="colDateBack" prefWidth="75.0" text="Возврата" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="colReasonDeliv" prefWidth="137.0" text="Программа выдачи" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="btnDeleteRecord" mnemonicParsing="false" text="Удалить запись" />
+        </items>
+      </ToolBar>
+   </bottom>
+</BorderPane>

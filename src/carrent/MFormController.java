@@ -228,7 +228,7 @@ public class MFormController implements Initializable {
     
     private final EventHandler<ActionEvent> mConnectEvent = (ActionEvent event) ->
     {
-//        DBBean.getInstance()  TODO Дописать!
+//        DBBean.getInstance()  TODO Дописать логирование
 //        mCar.setVisible(true);
 //        mClient.setVisible(true);
 //        mRefs.setVisible(true);

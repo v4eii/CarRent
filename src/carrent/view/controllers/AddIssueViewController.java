@@ -74,6 +74,7 @@ public class AddIssueViewController implements Initializable {
                 return null;
             }
         });
+        
         cbClient.getItems().addAll(DBBean.getInstance().getClientJPACtrl().findClientsEntities());
         cbClient.setConverter(new StringConverter<Clients>() {
             @Override
@@ -93,6 +94,7 @@ public class AddIssueViewController implements Initializable {
                 return null;
             }
         });
+        
         cbReasonDeliv.getItems().addAll(FXCollections.observableArrayList(DBBean.getInstance().getRefsJPACtrl().getRefsByIdRefsName(6))
                 .filtered((Refs t) ->
         {
@@ -121,6 +123,7 @@ public class AddIssueViewController implements Initializable {
                 return null;
             }
         });
+        
         dpDateDeliv.setValue(LocalDate.now());
         dpDateBack.setValue(LocalDate.now().plusDays(5));
         dpDateEndNumPowAtt.setValue(LocalDate.now());
@@ -203,11 +206,11 @@ public class AddIssueViewController implements Initializable {
                     catch (Exception ex)
                     {
                         DBBean.getInstance().showErrDialog(ex, "Ошибка добавления записи", "");
-                        ReservViewController.getStage().close();
+                        ReservViewController.getAddStage().close();
                     }
                     
                     recordAdd = true;
-                    ReservViewController.getStage().close();
+                    ReservViewController.getAddStage().close();
                     
                 }
                 else                
@@ -218,7 +221,7 @@ public class AddIssueViewController implements Initializable {
     
     private final EventHandler<ActionEvent> btnCancelEvent = (ActionEvent event) ->
     {
-        ReservViewController.getStage().close();
+        ReservViewController.getAddStage().close();
     };
     
 }

@@ -332,6 +332,7 @@ public class CarsViewController implements Initializable {
     {
         return colStat;
     }
+    
     //<editor-fold defaultstate="collapsed" desc="Обработчики контекстного меню">
     private final EventHandler<ActionEvent> addRecord = (ActionEvent event) ->
     {

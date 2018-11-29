@@ -1,66 +1,107 @@
-[EL Fine]: server: 2018-11-28 20:50:26.652--Thread(Thread[JavaFX Application Thread,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
-[EL Config]: metadata: 2018-11-28 20:50:26.771--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Users] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.79--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Cars] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.799--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field reservationCollection] is being defaulted to: class carrent.entity.Reservation.
-[EL Config]: metadata: 2018-11-28 20:50:26.8--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field deliveryCarCollection] is being defaulted to: class carrent.entity.DeliveryCar.
-[EL Config]: metadata: 2018-11-28 20:50:26.801--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.DeliveryCar] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.803--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field cars] is being defaulted to: class carrent.entity.Cars.
-[EL Config]: metadata: 2018-11-28 20:50:26.804--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field clients] is being defaulted to: class carrent.entity.Clients.
-[EL Config]: metadata: 2018-11-28 20:50:26.804--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field reservation] is being defaulted to: class carrent.entity.Reservation.
-[EL Config]: metadata: 2018-11-28 20:50:26.806--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Refs] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.806--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field refsName] is being defaulted to: class carrent.entity.RefsName.
-[EL Config]: metadata: 2018-11-28 20:50:26.807--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Reservation] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.807--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field deliveryCarCollection] is being defaulted to: class carrent.entity.DeliveryCar.
-[EL Config]: metadata: 2018-11-28 20:50:26.808--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field idClient] is being defaulted to: class carrent.entity.Clients.
-[EL Config]: metadata: 2018-11-28 20:50:26.808--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field idCar] is being defaulted to: class carrent.entity.Cars.
-[EL Config]: metadata: 2018-11-28 20:50:26.808--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.RefsName] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.808--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field refsCollection] is being defaulted to: class carrent.entity.Refs.
-[EL Config]: metadata: 2018-11-28 20:50:26.809--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Clients] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.809--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field reservationCollection] is being defaulted to: class carrent.entity.Reservation.
-[EL Config]: metadata: 2018-11-28 20:50:26.809--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field deliveryCarCollection] is being defaulted to: class carrent.entity.DeliveryCar.
-[EL Config]: metadata: 2018-11-28 20:50:26.81--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.DeliveryCarPK] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.811--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.RefsPK] is set to [FIELD].
-[EL Config]: metadata: 2018-11-28 20:50:26.811--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Users] is being defaulted to: Users.
-[EL Config]: metadata: 2018-11-28 20:50:26.813--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Users] is being defaulted to: USERS.
-[EL Config]: metadata: 2018-11-28 20:50:26.827--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [role] is being defaulted to: ROLE.
-[EL Config]: metadata: 2018-11-28 20:50:26.83--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Cars] is being defaulted to: Cars.
-[EL Config]: metadata: 2018-11-28 20:50:26.83--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Cars] is being defaulted to: CARS.
-[EL Config]: metadata: 2018-11-28 20:50:26.83--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [kacko] is being defaulted to: KACKO.
-[EL Config]: metadata: 2018-11-28 20:50:26.831--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [milleage] is being defaulted to: MILLEAGE.
-[EL Config]: metadata: 2018-11-28 20:50:26.831--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [osago] is being defaulted to: OSAGO.
-[EL Config]: metadata: 2018-11-28 20:50:26.831--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [vin] is being defaulted to: VIN.
-[EL Config]: metadata: 2018-11-28 20:50:26.831--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.DeliveryCar] is being defaulted to: DeliveryCar.
-[EL Config]: metadata: 2018-11-28 20:50:26.836--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [milleage] is being defaulted to: MILLEAGE.
-[EL Config]: metadata: 2018-11-28 20:50:26.837--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Refs] is being defaulted to: Refs.
-[EL Config]: metadata: 2018-11-28 20:50:26.837--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Refs] is being defaulted to: REFS.
-[EL Config]: metadata: 2018-11-28 20:50:26.838--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Reservation] is being defaulted to: Reservation.
-[EL Config]: metadata: 2018-11-28 20:50:26.838--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Reservation] is being defaulted to: RESERVATION.
-[EL Config]: metadata: 2018-11-28 20:50:26.839--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [confidant] is being defaulted to: CONFIDANT.
-[EL Config]: metadata: 2018-11-28 20:50:26.839--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.RefsName] is being defaulted to: RefsName.
-[EL Config]: metadata: 2018-11-28 20:50:26.84--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Clients] is being defaulted to: Clients.
-[EL Config]: metadata: 2018-11-28 20:50:26.84--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Clients] is being defaulted to: CLIENTS.
-[EL Config]: metadata: 2018-11-28 20:50:26.84--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [birhday] is being defaulted to: BIRHDAY.
-[EL Info]: 2018-11-28 20:50:27.347--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.7.2.v20180622-f627448
-[EL Fine]: connection: 2018-11-28 20:50:27.622--Thread(Thread[JavaFX Application Thread,5,main])--Detected database platform: org.eclipse.persistence.platform.database.MySQLPlatform
-[EL Config]: connection: 2018-11-28 20:50:27.631--ServerSession(739364307)--Connection(259121239)--Thread(Thread[JavaFX Application Thread,5,main])--connecting(DatabaseLogin(
+[EL Fine]: server: 2018-11-29 21:26:55.49--Thread(Thread[JavaFX Application Thread,5,main])--Configured server platform: org.eclipse.persistence.platform.server.NoServerPlatform
+[EL Config]: metadata: 2018-11-29 21:26:55.629--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Users] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.656--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Cars] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.67--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field reservationCollection] is being defaulted to: class carrent.entity.Reservation.
+[EL Config]: metadata: 2018-11-29 21:26:55.672--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field deliveryCarCollection] is being defaulted to: class carrent.entity.DeliveryCar.
+[EL Config]: metadata: 2018-11-29 21:26:55.673--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.DeliveryCar] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.676--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field cars] is being defaulted to: class carrent.entity.Cars.
+[EL Config]: metadata: 2018-11-29 21:26:55.676--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field clients] is being defaulted to: class carrent.entity.Clients.
+[EL Config]: metadata: 2018-11-29 21:26:55.677--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field reservation] is being defaulted to: class carrent.entity.Reservation.
+[EL Config]: metadata: 2018-11-29 21:26:55.68--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Refs] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.681--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field refsName] is being defaulted to: class carrent.entity.RefsName.
+[EL Config]: metadata: 2018-11-29 21:26:55.682--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Reservation] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.682--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field deliveryCarCollection] is being defaulted to: class carrent.entity.DeliveryCar.
+[EL Config]: metadata: 2018-11-29 21:26:55.683--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field idClient] is being defaulted to: class carrent.entity.Clients.
+[EL Config]: metadata: 2018-11-29 21:26:55.684--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the many to one mapping element [field idCar] is being defaulted to: class carrent.entity.Cars.
+[EL Config]: metadata: 2018-11-29 21:26:55.685--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.RefsName] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.686--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field refsCollection] is being defaulted to: class carrent.entity.Refs.
+[EL Config]: metadata: 2018-11-29 21:26:55.687--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.Clients] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.689--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field reservationCollection] is being defaulted to: class carrent.entity.Reservation.
+[EL Config]: metadata: 2018-11-29 21:26:55.69--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The target entity (reference) class for the one to many mapping element [field deliveryCarCollection] is being defaulted to: class carrent.entity.DeliveryCar.
+[EL Config]: metadata: 2018-11-29 21:26:55.691--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.DeliveryCarPK] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.694--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The access type for the persistent class [class carrent.entity.RefsPK] is set to [FIELD].
+[EL Config]: metadata: 2018-11-29 21:26:55.695--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Users] is being defaulted to: Users.
+[EL Config]: metadata: 2018-11-29 21:26:55.698--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Users] is being defaulted to: USERS.
+[EL Config]: metadata: 2018-11-29 21:26:55.716--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [role] is being defaulted to: ROLE.
+[EL Config]: metadata: 2018-11-29 21:26:55.719--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Cars] is being defaulted to: Cars.
+[EL Config]: metadata: 2018-11-29 21:26:55.719--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Cars] is being defaulted to: CARS.
+[EL Config]: metadata: 2018-11-29 21:26:55.719--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [kacko] is being defaulted to: KACKO.
+[EL Config]: metadata: 2018-11-29 21:26:55.72--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [milleage] is being defaulted to: MILLEAGE.
+[EL Config]: metadata: 2018-11-29 21:26:55.72--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [osago] is being defaulted to: OSAGO.
+[EL Config]: metadata: 2018-11-29 21:26:55.721--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [vin] is being defaulted to: VIN.
+[EL Config]: metadata: 2018-11-29 21:26:55.721--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.DeliveryCar] is being defaulted to: DeliveryCar.
+[EL Config]: metadata: 2018-11-29 21:26:55.726--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [milleage] is being defaulted to: MILLEAGE.
+[EL Config]: metadata: 2018-11-29 21:26:55.728--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Refs] is being defaulted to: Refs.
+[EL Config]: metadata: 2018-11-29 21:26:55.728--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Refs] is being defaulted to: REFS.
+[EL Config]: metadata: 2018-11-29 21:26:55.729--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Reservation] is being defaulted to: Reservation.
+[EL Config]: metadata: 2018-11-29 21:26:55.73--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Reservation] is being defaulted to: RESERVATION.
+[EL Config]: metadata: 2018-11-29 21:26:55.73--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [confidant] is being defaulted to: CONFIDANT.
+[EL Config]: metadata: 2018-11-29 21:26:55.731--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.RefsName] is being defaulted to: RefsName.
+[EL Config]: metadata: 2018-11-29 21:26:55.732--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The alias name for the entity class [class carrent.entity.Clients] is being defaulted to: Clients.
+[EL Config]: metadata: 2018-11-29 21:26:55.732--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The table name for entity [class carrent.entity.Clients] is being defaulted to: CLIENTS.
+[EL Config]: metadata: 2018-11-29 21:26:55.733--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--The column name for element [birhday] is being defaulted to: BIRHDAY.
+[EL Info]: 2018-11-29 21:26:56.417--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--EclipseLink, version: Eclipse Persistence Services - 2.7.2.v20180622-f627448
+[EL Fine]: connection: 2018-11-29 21:26:56.793--Thread(Thread[JavaFX Application Thread,5,main])--Detected database platform: org.eclipse.persistence.platform.database.MySQLPlatform
+[EL Config]: connection: 2018-11-29 21:26:56.815--ServerSession(1100936461)--Connection(1578690936)--Thread(Thread[JavaFX Application Thread,5,main])--connecting(DatabaseLogin(
 	platform=>MySQLPlatform
 	user name=> "root"
 	datasource URL=> "jdbc:mysql://localhost:3306/car_rent?zeroDateTimeBehavior=convertToNull"
 ))
-[EL Config]: connection: 2018-11-28 20:50:27.637--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--Connected: jdbc:mysql://localhost:3306/car_rent?zeroDateTimeBehavior=convertToNull
+[EL Config]: connection: 2018-11-29 21:26:56.824--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--Connected: jdbc:mysql://localhost:3306/car_rent?zeroDateTimeBehavior=convertToNull
 	User: root@localhost
 	Database: MySQL  Version: 5.5.23
 	Driver: MySQL Connector Java  Version: mysql-connector-java-5.1.47 ( Revision: fe1903b1ecb4a96a917f7ed3190d80c049b1de29 )
-[EL Info]: connection: 2018-11-28 20:50:27.768--ServerSession(739364307)--Thread(Thread[JavaFX Application Thread,5,main])--/file:/C:/Users/v4e/Documents/Java projects/CarRent/dist/run978891143/CarRent.jar_CarRentPU login successful
-[EL Fine]: sql: 2018-11-28 20:50:27.798--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT role FROM users WHERE user_login = "Admin"
-[EL Fine]: sql: 2018-11-28 20:50:27.824--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_user, date_create, date_delete, ROLE, user_login, user_password FROM car_rent.USERS WHERE (user_login = ?)
+[EL Info]: connection: 2018-11-29 21:26:57.035--ServerSession(1100936461)--Thread(Thread[JavaFX Application Thread,5,main])--/file:/C:/Users/v4e/Documents/Java projects/CarRent/dist/run1143306640/CarRent.jar_CarRentPU login successful
+[EL Fine]: sql: 2018-11-29 21:26:57.069--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT role FROM users WHERE user_login = "Admin"
+[EL Fine]: sql: 2018-11-29 21:26:57.116--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_user, date_create, date_delete, ROLE, user_login, user_password FROM car_rent.USERS WHERE (user_login = ?)
 	bind => [Admin]
-[EL Fine]: sql: 2018-11-28 20:50:27.831--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT user_password FROM users WHERE user_login = "Admin"
-[EL Fine]: sql: 2018-11-28 20:50:27.832--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_delete FROM users WHERE user_login = "Admin"
-[EL Fine]: sql: 2018-11-28 20:50:36.583--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_ref_name, ref_name FROM car_rent.refs_name
-[EL Fine]: sql: 2018-11-28 20:50:38.093--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE (id_ref_name = ?)
+[EL Fine]: sql: 2018-11-29 21:26:57.124--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT user_password FROM users WHERE user_login = "Admin"
+[EL Fine]: sql: 2018-11-29 21:26:57.127--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_delete FROM users WHERE user_login = "Admin"
+[EL Fine]: sql: 2018-11-29 21:26:59.194--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_car, id_color, id_make, id_model, id_stat, KACKO, MILLEAGE, Number_registration, OSAGO, Release_date, Technical_inspection, VIN FROM car_rent.CARS
+[EL Fine]: sql: 2018-11-29 21:26:59.205--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE ((id_ref_name = ?) AND (id_ref = ?))
+	bind => [3, 301]
+[EL Fine]: sql: 2018-11-29 21:26:59.208--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_ref_name, ref_name FROM car_rent.refs_name WHERE (id_ref_name = ?)
 	bind => [3]
-[EL Fine]: sql: 2018-11-28 20:51:07.423--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE (id_ref_name = ?)
+[EL Fine]: sql: 2018-11-29 21:26:59.213--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE ((id_ref_name = ?) AND (id_ref = ?))
+	bind => [2, 201]
+[EL Fine]: sql: 2018-11-29 21:26:59.214--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_ref_name, ref_name FROM car_rent.refs_name WHERE (id_ref_name = ?)
+	bind => [2]
+[EL Fine]: sql: 2018-11-29 21:26:59.217--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_back, date_delivery, end_numpa, id_reason, MILLEAGE, num_power_attorney, id_client, id_contract, id_car FROM car_rent.delivery_car WHERE (id_car = ?)
+	bind => [5]
+[EL Fine]: sql: 2018-11-29 21:26:59.22--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_client, BIRHDAY, date_issue_doc, first_name, id_doc, issued_by_doc, last_name, middle_name, number_doc, phone_number, registration_adress, series_doc FROM car_rent.CLIENTS WHERE (id_client = ?)
+	bind => [1]
+[EL Fine]: sql: 2018-11-29 21:26:59.222--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_contract, Comment, CONFIDANT, Date_cancel, End_reserve, Start_reserve, User_cancel, id_car, id_client FROM car_rent.RESERVATION WHERE (id_contract = ?)
+	bind => [2]
+[EL Fine]: sql: 2018-11-29 21:26:59.234--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE ((id_ref_name = ?) AND (id_ref = ?))
+	bind => [3, 302]
+[EL Fine]: sql: 2018-11-29 21:26:59.237--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE ((id_ref_name = ?) AND (id_ref = ?))
+	bind => [2, 202]
+[EL Fine]: sql: 2018-11-29 21:26:59.239--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_back, date_delivery, end_numpa, id_reason, MILLEAGE, num_power_attorney, id_client, id_contract, id_car FROM car_rent.delivery_car WHERE (id_car = ?)
 	bind => [6]
-[EL Fine]: sql: 2018-11-28 20:51:10.117--ServerSession(739364307)--Connection(1607710217)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE (id_ref_name = ?)
-	bind => [4]
+[EL Fine]: sql: 2018-11-29 21:26:59.24--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_client, BIRHDAY, date_issue_doc, first_name, id_doc, issued_by_doc, last_name, middle_name, number_doc, phone_number, registration_adress, series_doc FROM car_rent.CLIENTS WHERE (id_client = ?)
+	bind => [2]
+[EL Fine]: sql: 2018-11-29 21:26:59.242--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_contract, Comment, CONFIDANT, Date_cancel, End_reserve, Start_reserve, User_cancel, id_car, id_client FROM car_rent.RESERVATION WHERE (id_contract = ?)
+	bind => [17]
+[EL Fine]: sql: 2018-11-29 21:26:59.247--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE ((id_ref_name = ?) AND (id_ref = ?))
+	bind => [2, 203]
+[EL Fine]: sql: 2018-11-29 21:26:59.25--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_back, date_delivery, end_numpa, id_reason, MILLEAGE, num_power_attorney, id_client, id_contract, id_car FROM car_rent.delivery_car WHERE (id_car = ?)
+	bind => [7]
+[EL Fine]: sql: 2018-11-29 21:26:59.251--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_contract, Comment, CONFIDANT, Date_cancel, End_reserve, Start_reserve, User_cancel, id_car, id_client FROM car_rent.RESERVATION WHERE (id_contract = ?)
+	bind => [18]
+[EL Fine]: sql: 2018-11-29 21:27:01.778--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_back, date_delivery, end_numpa, id_reason, MILLEAGE, num_power_attorney, id_client, id_contract, id_car FROM car_rent.delivery_car
+[EL Fine]: sql: 2018-11-29 21:27:01.86--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_cancel, date_create, ref_name, id_ref_name, id_ref FROM car_rent.REFS WHERE ((id_ref_name = ?) AND (id_ref = ?))
+	bind => [6, 601]
+[EL Fine]: sql: 2018-11-29 21:27:01.862--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_ref_name, ref_name FROM car_rent.refs_name WHERE (id_ref_name = ?)
+	bind => [6]
+[EL Fine]: sql: 2018-11-29 21:27:33.065--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_back, date_delivery, end_numpa, id_reason, MILLEAGE, num_power_attorney, id_client, id_contract, id_car FROM car_rent.delivery_car WHERE (id_client = ?)
+	bind => [1]
+[EL Fine]: sql: 2018-11-29 21:27:33.071--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT date_back, date_delivery, end_numpa, id_reason, MILLEAGE, num_power_attorney, id_client, id_contract, id_car FROM car_rent.delivery_car WHERE (id_contract = ?)
+	bind => [18]
+[EL Fine]: sql: 2018-11-29 21:27:33.085--ClientSession(418262798)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--DELETE FROM car_rent.delivery_car WHERE (((id_client = ?) AND (id_contract = ?)) AND (id_car = ?))
+	bind => [1, 18, 7]
+[EL Fine]: sql: 2018-11-29 21:27:36.876--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_contract, Comment, CONFIDANT, Date_cancel, End_reserve, Start_reserve, User_cancel, id_car, id_client FROM car_rent.RESERVATION WHERE (id_car = ?)
+	bind => [7]
+[EL Fine]: sql: 2018-11-29 21:27:36.878--ServerSession(1100936461)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--SELECT id_contract, Comment, CONFIDANT, Date_cancel, End_reserve, Start_reserve, User_cancel, id_car, id_client FROM car_rent.RESERVATION WHERE (id_client = ?)
+	bind => [1]
+[EL Fine]: sql: 2018-11-29 21:27:36.881--ClientSession(1985134054)--Connection(2110221200)--Thread(Thread[JavaFX Application Thread,5,main])--DELETE FROM car_rent.RESERVATION WHERE (id_contract = ?)
+	bind => [18]
