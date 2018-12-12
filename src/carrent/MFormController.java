@@ -4,6 +4,7 @@ import carrent.beans.DBBean;
 import carrent.view.controllers.CarsViewController;
 import carrent.view.controllers.ClientsViewController;
 import carrent.view.controllers.RefsViewController;
+import carrent.view.controllers.ReportViewController;
 import carrent.view.controllers.ReservViewController;
 import carrent.view.controllers.UsersViewController;
 import java.io.IOException;
@@ -15,9 +16,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -32,6 +36,9 @@ public class MFormController implements Initializable {
     private UsersViewController usersViewCtrl;
     private static ClientsViewController clientsViewCtrl;
     private static ReservViewController reservViewCtrl;
+    private ReportViewController reportViewCtrl;
+    
+    private static Stage reportStage;
     
     @FXML
     private MenuItem mConnect, 
@@ -42,6 +49,7 @@ public class MFormController implements Initializable {
                      mReserv,
                      mCar,
                      mClient,
+                     mReport,
                      mAbout;
     @FXML
     private BorderPane rootPane;
@@ -58,6 +66,7 @@ public class MFormController implements Initializable {
         mReserv.addEventHandler(ActionEvent.ACTION, mReservEvent);
         mDisconnect.addEventHandler(ActionEvent.ACTION, mDisconnectEvent);
         mConnect.addEventHandler(ActionEvent.ACTION, mConnectEvent);
+        mReport.addEventHandler(ActionEvent.ACTION, mReportEvent);
     }    
     
     private final EventHandler<ActionEvent> mExitEvent = (ActionEvent event) ->
@@ -212,6 +221,26 @@ public class MFormController implements Initializable {
         }
     };
     
+    private final EventHandler<ActionEvent> mReportEvent = (ActionEvent event) ->
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(MFormController.this.getClass().getResource("/carrent/view/ReportView.fxml"));
+            BorderPane bPane = loader.load();
+            reportViewCtrl = loader.getController();
+            Scene scene = new Scene(bPane);
+            reportStage = new Stage();
+            reportStage.setScene(scene);
+            reportStage.setTitle("Отчет");
+            reportStage.getIcons().add(new Image("/carrent/resources/report.png"));
+            reportStage.showAndWait();
+        }
+        catch (IOException ex)
+        {
+            DBBean.getInstance().showErrDialog(ex, "Ошибка загрузки формы отчетов", "");
+        }
+    };
+    
     private final EventHandler<ActionEvent> mDisconnectEvent = (ActionEvent event) ->
     {
         if (DBBean.getInstance().showConfirmDialog("Подтверждение", "Отключение", "Вы уверены что хотите отключиться от базы данных?").get() == ButtonType.OK)
@@ -244,6 +273,11 @@ public class MFormController implements Initializable {
     public static ClientsViewController getClientsViewCtrl()
     {
         return clientsViewCtrl;
+    }
+
+    public static Stage getReportStage()
+    {
+        return reportStage;
     }
     
 }

@@ -130,6 +130,16 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="mReport" mnemonicParsing="false" text="Отчеты...">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/report.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MenuItem>
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Помощь">
