@@ -2,9 +2,6 @@ package carrent.view.controllers;
 
 import carrent.MFormController;
 import carrent.beans.DBBean;
-import carrent.entity.CarReport;
-import carrent.entity.Cars;
-import carrent.entity.RefsPK;
 import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -56,16 +53,58 @@ public class ReportViewController implements Initializable {
     
     private final EventHandler<ActionEvent> formReportEvent = (ActionEvent event) ->
     {
-        switch(cbTypeReport.getSelectionModel().getSelectedIndex())
+        textArea.clear();
+        if(cbTypeReport.getValue() != null)
         {
-            case 0:
+            switch (cbTypeReport.getSelectionModel().getSelectedIndex())
             {
-                List<CarReport> tmp = DBBean.getInstance().getDeliveryCarJPACtrl().getReportCarCount(new SimpleDateFormat("yyyy.MM.dd").format(Date.valueOf(dpAfter.getValue())), new SimpleDateFormat("yyyy.MM.dd").format(Date.valueOf(dpBefore.getValue())));
-                DBBean.getInstance().getCarsJPACtrl().findCarsEntities().forEach((Cars t) ->
+                case 0:
                 {
-                    textArea.appendText(DBBean.getInstance().getRefsJPACtrl().findRefs(new RefsPK(3, t.getIdMake())).getRefName() + " " + String.valueOf(t.getDeliveryCarCollection().size()) + "\n");
-                });
+                    List<Object[]> tmp = DBBean.getInstance().getDeliveryCarJPACtrl().getReportCarCount(new SimpleDateFormat("yyyy.MM.dd").format(Date.valueOf(dpAfter.getValue())),
+                            new SimpleDateFormat("yyyy.MM.dd").format(Date.valueOf(dpBefore.getValue())));
+                    textArea.appendText("                                              Количество выдач автомобилей\n");
+                    textArea.appendText(String.format("                                           За период от %s до %s:\n\n", new SimpleDateFormat("dd.MM.yyyy").format(Date.valueOf(dpAfter.getValue())),
+                            new SimpleDateFormat("dd.MM.yyyy").format(Date.valueOf(dpBefore.getValue()))));
+                    if (!tmp.isEmpty())
+                    {
+                        tmp.forEach((Object[] t) ->
+                        {
+                            textArea.appendText(String.format("%s %s %s: %s раз(а)", t[0].toString(), t[1].toString(), t[2].toString(), t[3].toString()));
+                            textArea.appendText(System.getProperty("line.separator"));
+                        });
+                    }
+                    else
+                    {
+                        textArea.appendText("Нет данных за указанный промежуток...");
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    List<Object[]> tmp = DBBean.getInstance().getDeliveryCarJPACtrl().getReportClientCarCount(new SimpleDateFormat("yyyy.MM.dd").format(Date.valueOf(dpAfter.getValue())),
+                            new SimpleDateFormat("yyyy.MM.dd").format(Date.valueOf(dpBefore.getValue())));
+                    textArea.appendText("                                         Количество выдач автомобилей клиентам\n");
+                    textArea.appendText(String.format("                                           За период от %s до %s:\n\n", new SimpleDateFormat("dd.MM.yyyy").format(Date.valueOf(dpAfter.getValue())),
+                            new SimpleDateFormat("dd.MM.yyyy").format(Date.valueOf(dpBefore.getValue()))));
+                    if (!tmp.isEmpty())
+                    {
+                        tmp.forEach((Object[] t) ->
+                        {
+                            textArea.appendText(String.format("%s %s %s получал автомобили: %s раз(а)", t[0].toString(), t[1].toString(), t[2].toString(), t[3].toString()));
+                            textArea.appendText(System.getProperty("line.separator"));
+                        });
+                    }
+                    else
+                    {
+                        textArea.appendText("Нет данных за указанный промежуток...");
+                    }
+                    break;
+                }
             }
+        }
+        else
+        {
+            DBBean.getInstance().showWarningDialog("Не указан тип отчета", "Выберите тип отчета");
         }
     };
 

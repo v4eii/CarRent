@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package carrent.entity.controllers;
 
-import carrent.entity.CarReport;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
@@ -301,54 +295,56 @@ public class DeliveryCarJpaController implements Serializable {
         }
     }
     
-    public List<CarReport> getReportCarCount(String dateAfter, String dateBefore)
+    public List<Object[]> getReportCarCount(String dateAfter, String dateBefore)
     {
         EntityManager em = getEntityManager();
         try
         {
-            
-            //TODO Разобраться с листом
-            String tmp = String.format("SELECT (SELECT last_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name2, \n" +
-                    "(SELECT first_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name, \n" +
-                    "(SELECT middle_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name3, COUNT(*) AS Reserv_in_month,\n" +
-                    "(SELECT ref_name FROM refs WHERE id_ref =\n" +
-                    "(SELECT id_make FROM cars WHERE cars.id_car = delivery_car.id_car)) AS Car_make,\n" +
-                    "(SELECT ref_name FROM refs WHERE id_ref =\n" +
-                    "(SELECT id_model FROM cars WHERE cars.id_car = delivery_car.id_car)) AS Car_model,\n" +
-                    "(SELECT VIN FROM cars WHERE cars.id_car = delivery_car.id_car) AS VIN_Car\n" +
-                    "FROM delivery_car\n" +
-                    "WHERE date_delivery\n" +
-                    "BETWEEN \"%s\" AND \"%s\"\n" +
-                    "GROUP BY id_car;", dateAfter, dateBefore);
+            String tmp = String.format("SELECT (SELECT ref_name FROM refs WHERE id_ref =\n"
+                    + "(SELECT id_make FROM cars WHERE cars.id_car = delivery_car.id_car)) AS Car_make,\n"
+                    + "(SELECT ref_name FROM refs WHERE id_ref =\n"
+                    + "(SELECT id_model FROM cars WHERE cars.id_car = delivery_car.id_car)) AS Car_model,\n"
+                    + "(SELECT VIN FROM cars WHERE cars.id_car = delivery_car.id_car) AS VIN_Car,"
+                    + "COUNT(*) AS Reserv_in_month\n"
+                    + "FROM delivery_car\n"
+                    + "WHERE date_delivery\n"
+                    + "BETWEEN \"%s\" AND \"%s\"\n"
+                    + "GROUP BY id_car", dateAfter, dateBefore);
             
             Query q = em.createNativeQuery(tmp);
             
             return q.getResultList();
             
         }
-        catch(Exception ex)
+        finally
         {
-            System.err.println(ex.getMessage());
-            return null;
+            em.close();
+        }
+    }
+    
+     public List<Object[]> getReportClientCarCount(String dateAfter, String dateBefore)
+    {
+        EntityManager em = getEntityManager();
+        try
+        {
+            String tmp = String.format("SELECT (SELECT last_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name2,\n"
+                    + "(SELECT first_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name,\n"
+                    + "(SELECT middle_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name3,\n"
+                    + "COUNT(*) AS count\n"
+                    + "FROM delivery_car\n"
+                    + "WHERE date_delivery\n"
+                    + "BETWEEN \"%s\" AND \"%s\"\n"
+                    + "GROUP BY id_client", dateAfter, dateBefore);
+            
+            Query q = em.createNativeQuery(tmp);
+            
+            return q.getResultList();
         }
         finally
         {
             em.close();
         }
-        /*
-        SELECT (SELECT first_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name, 
-        (SELECT last_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name2, 
-        (SELECT middle_name FROM clients WHERE delivery_car.id_client = clients.id_client) AS client_name3, COUNT(*) AS Reserv_in_month,
-        (SELECT ref_name FROM refs WHERE id_ref =
-        (SELECT id_make FROM cars WHERE cars.id_car = delivery_car.id_car)) AS Car_make,
-        (SELECT ref_name FROM refs WHERE id_ref =
-        (SELECT id_model FROM cars WHERE cars.id_car = delivery_car.id_car)) AS Car_model,
-        (SELECT VIN FROM cars WHERE cars.id_car = delivery_car.id_car) AS VIN_Car
-        FROM delivery_car
-        WHERE date_delivery
-        BETWEEN "2018.11.12" AND "2019.01.12"
-        GROUP BY id_car;
-         */
+        
     }
     
 }
