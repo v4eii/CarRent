@@ -40,6 +40,7 @@
         <items>
           <Button fx:id="btnCancel" mnemonicParsing="false" text="Отмена" />
             <Button fx:id="btnFormRep" mnemonicParsing="false" text="Сформировать" />
+            <Button fx:id="btnPrintPDF" mnemonicParsing="false" text="Печать" />
         </items>
       </ToolBar>
    </bottom>
